@@ -1,5 +1,5 @@
 ; Commentaire Grace
-%define S " Commentaire Grace%2$c%define S %3$c%1$s%3$c%2$c"
+%define S "; Commentaire Grace%2$c%%define S %3$c%1$s%3$c%2$c%%define D_MAIN global -main%2$c%%define FT _main:%2$csection .data%2$cdata:%2$c.s db S, 0%2$c.fichier db %3$cGrace_kid.s%3$c, 0%2$csection .text%2$cglobal start%2$cextern _dprintf%2$cD_MAIN%2$cstart:%2$cFT%2$cpush rbp%2$cmov rbp, rsp%2$cmov rax, 0x2000005%2$cmov rdi, 0x202%2$cmov rdx, 0x124%2$csyscall%2$cmov rdi, rax%2$cmov rsi, data.s%2$cmov rdx, data.s%2$cmov rcx, 10%2$cmov r8, 34%2$ccall _dprintf%2$cleave%2$cret"
 %define D_MAIN global _main
 %define FT _main:
 section .data
@@ -15,14 +15,15 @@ FT
 push rbp
 mov rbp, rsp
 mov rax, 0x2000005
-lea rdi, [rel data.fichier]
-mov rsi, 0x0202
+mov rdi, data.fichier
+mov rsi, 0x202
 mov rdx, 0x124
 syscall
-; mov rax, 2
-; lea rdi, [rel data.fichier]
-; mov rsi, 1
-; syscall
-; lea rdi, [rel data.file]
+mov rdi, rax
+mov rsi, data.s
+mov rdx, data.s
+mov rcx, 10
+mov r8, 34
+call _dprintf
 leave
 ret
