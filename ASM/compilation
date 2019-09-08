@@ -1,0 +1,2 @@
+nasm -f macho64 Grace.s -o Grace.o
+ld Grace.o -o Grace -macosx_version_min 10.8 -lSystem
