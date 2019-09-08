@@ -7,7 +7,7 @@ return 0;
 if(fs.existsSync(`./Sully_${x}.js`))
     x--;
 path=`./Sully_${x}.js`;
-fs.writeFile(`./Sully_${x}.js`, `var x=${x};\n(` + Sully.toString() + `)();`, function (err) {
+fs.writeFile(path, `var x=${x};\n(` + Sully.toString() + `)();`, function (err) {
     if (err) return console.log(err);
     exec.execSync(`node ${path}`);
 });
