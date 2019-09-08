@@ -14,7 +14,7 @@ start:
 _main:
 push rbp
 mov rbp, rsp
-mov r14, 8
+mov r14, 5
 mov r15, r14
 dec r15
 mov rdi, 10
