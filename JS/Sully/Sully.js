@@ -1,20 +1,14 @@
-function Sully(){
-$x=5;
-if($x<1)
-return 0;
-const { exec } = require('child_process');
+var x=5;
+(function Sully(){
 var fs=require('fs');
-if(fs.existsSync('./Sully_5.js')){
-$path=`./Sully_${$x-1}.js`;
-fs.writeFile($path, Sully.toString().replace($x, $x-1) + "\nSully();", function (err) {
+const exec = require('child_process');
+if(x<1)
+return 0;
+if(fs.existsSync(`./Sully_${x}.js`))
+    x--;
+path=`./Sully_${x}.js`;
+fs.writeFile(`./Sully_${x}.js`, `var x=${x};\n(` + Sully.toString() + `)();`, function (err) {
     if (err) return console.log(err);
+    exec.execSync(`node ${path}`);
 });
-} else {
-$path=`./Sully_${$x}.js`;
-fs.writeFile('./Sully_5.js', Sully.toString() + "\nSully();", function (err) {
-    if (err) return console.log(err);
-});
-}
-exec(`node ${$path}`);
-}
-Sully();
+})();
