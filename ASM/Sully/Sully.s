@@ -1,5 +1,5 @@
 section .data
-s db "section .data%2$cs db %3$c%1$s%3$c, 0%2$ccommand db %3$cnasm -f macho64 Sully_%%1$d.s && ld -lSystem -macosx_version_min 10.12 -o Sully_%%1$d Sully_%%1$d.o && rm *.o && ./Sully_%%1$d%3$c, 0%2$cfichier db %3$cSully_%%d.s%3$c, 0%2$csection .text%2$cglobal _main%2$cextern _sprintf%2$cextern _dprintf%2$cextern _malloc%2$cextern _free%2$cextern _system%2$cextern _printf%2$cextern _exit%2$cextern _access%2$c_main:%2$cpush rbp%2$cmov rbp, rsp%2$cmov r15, %4$d%2$ccmp r15, 1%2$cjb end%2$cmov rdi, 10%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, fichier%2$cmov rdx, r15%2$ccall _sprintf%2$csub  rsp, 8%2$ccall checker%2$cadd rsp, 8%2$cmov rdi, 10%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, fichier%2$cmov rdx, r15%2$ccall _sprintf%2$cmov rax, 0x2000005%2$cmov rdi, r14%2$cmov rsi, 514%2$cmov rdx, 0644o%2$csyscall%2$cmov rdi, rax%2$cmov rsi, s%2$cmov rdx, s%2$cmov rcx, 10%2$cmov r8, 34%2$cmov r9, r15%2$ccall _dprintf%2$cmov rdi, r14%2$ccall _free%2$cmov rdi, 255%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, command%2$cmov rdx, r15%2$ccall _sprintf%2$cmov rdi, r14%2$ccall _system%2$cmov rdi, r14%2$ccall _free%2$ccall end%2$cchecker:%2$clea rdi, [rel r14]%2$cmov rsi, 0%2$ccall _access%2$ccmp rax, 0%2$cjbe file_exist%2$cmov rdi, r14%2$ccall _free%2$cret%2$cfile_exist:%2$cdec r15%2$cret%2$cend:%2$cmov rax, 0x2000001%2$cxor rdi, rdi%2$csyscall", 0
+s db "section .data%2$cs db %3$c%1$s%3$c, 0%2$ccommand db %3$cnasm -f macho64 Sully_%%1$d.s && ld -lSystem -macosx_version_min 10.12 -o Sully_%%1$d Sully_%%1$d.o && rm *.o && ./Sully_%%1$d%3$c, 0%2$cfichier db %3$cSully_%%d.s%3$c, 0%2$csection .text%2$cglobal _main%2$cextern _sprintf%2$cextern _dprintf%2$cextern _malloc%2$cextern _free%2$cextern _system%2$cextern _access%2$c_main:%2$cpush rbp%2$cmov rbp, rsp%2$cmov r15, %4$d%2$ccmp r15, 1%2$cjb end%2$cmov rdi, 10%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, fichier%2$cmov rdx, r15%2$ccall _sprintf%2$csub  rsp, 8%2$ccall checker%2$cadd rsp, 8%2$cmov rdi, 10%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, fichier%2$cmov rdx, r15%2$ccall _sprintf%2$cmov rax, 0x2000005%2$cmov rdi, r14%2$cmov rsi, 514%2$cmov rdx, 0644o%2$csyscall%2$cmov rdi, rax%2$cmov rsi, s%2$cmov rdx, s%2$cmov rcx, 10%2$cmov r8, 34%2$cmov r9, r15%2$ccall _dprintf%2$cmov rdi, r14%2$ccall _free%2$cmov rdi, 255%2$ccall _malloc%2$cmov r14, rax%2$cmov rdi, r14%2$cmov rsi, command%2$cmov rdx, r15%2$ccall _sprintf%2$cmov rdi, r14%2$ccall _system%2$cmov rdi, r14%2$ccall _free%2$ccall end%2$cchecker:%2$clea rdi, [rel r14]%2$cmov rsi, 0%2$ccall _access%2$ccmp rax, 0%2$cjbe file_exist%2$cmov rdi, r14%2$ccall _free%2$cret%2$cfile_exist:%2$cdec r15%2$cret%2$cend:%2$cmov rax, 0x2000001%2$cxor rdi, rdi%2$csyscall", 0
 command db "nasm -f macho64 Sully_%1$d.s && ld -lSystem -macosx_version_min 10.12 -o Sully_%1$d Sully_%1$d.o && rm *.o && ./Sully_%1$d", 0
 fichier db "Sully_%d.s", 0
 section .text
@@ -9,13 +9,11 @@ extern _dprintf
 extern _malloc
 extern _free
 extern _system
-extern _printf
-extern _exit
 extern _access
 _main:
 push rbp
 mov rbp, rsp
-mov r15, 10
+mov r15, 5
 cmp r15, 1
 jb end
 mov rdi, 10
