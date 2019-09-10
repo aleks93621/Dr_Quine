@@ -18,18 +18,18 @@ all: Colleen Grace Sully
 
 Colleen: $(OBJ_COLLEEN)
 	@$(CC) $(FLAG) $(OBJ_COLLEEN) -o ./Colleen/Colleen
-	@echo "$(CV)[DR_QUINE] : Compilation Colleen ...$(CNOR)";
+	@echo "$(CV)------------ Colleen ...$(CNOR)"
 
 Grace: $(OBJ_GRACE)
 	@$(CC) $(FLAG) $(OBJ_GRACE) -o ./Grace/Grace
-	@echo "$(CV)[DR_QUINE] : Compilation Grace ...$(CNOR)";
+	@echo "$(CV)------------ Grace ...$(CNOR)"
 
 Sully: $(OBJ_SULLY)
 	@$(CC) $(FLAG) $(OBJ_SULLY) -o ./Sully/Sully
-	@echo "$(CV)[DR_QUINE] : Compilation Sully ...$(CNOR)";
+	@echo "$(CV)------------ Sully ...$(CNOR)"
 
-%.o: %.s
-	@$(CC) $(FLAG) -c $< -o $@
+%.o: %.c
+	@clang $(FLAG) -o $@ -c $<
 	@echo "$(CV)[DR_QUINE] : Compilation $<$(CNOR)";
 
 clean:
